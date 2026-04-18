@@ -97,7 +97,12 @@ export function Footer() {
 
         <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-between text-xs font-mono uppercase tracking-[0.18em] text-[var(--color-neutral)]/45">
           <p>© {new Date().getFullYear()} {company.name}</p>
-          <p>Founded {company.foundedYear} · {company.location} · Built with care</p>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy" className="hover:text-[var(--color-primary)] transition-colors">
+              Privacy Policy
+            </Link>
+            <p>Founded {company.foundedYear} · {company.location}</p>
+          </div>
         </div>
       </div>
     </footer>

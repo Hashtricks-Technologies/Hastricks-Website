@@ -30,6 +30,7 @@ export const footerSections = [
       { label: "Blog", href: "/blog" },
       { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
+      { label: "Privacy Policy", href: "/privacy" },
     ],
   },
 ] as const;
