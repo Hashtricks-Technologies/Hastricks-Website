@@ -1,0 +1,7 @@
+# Ignore the internal website workspace files that don't need the top-level git
+hashtricks-website/.next/
+hashtricks-website/node_modules/
+hashtricks-website/.npm-cache/
+hashtricks-website/.env
+hashtricks-website/.env.local
+.playwright-mcp/
