@@ -9,11 +9,11 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Careers",
   description: "Build AI-powered software with a senior team at Hashtricks Technologies, Coimbatore.",
-  alternates: { canonical: "https://hashtricks.tech/careers" },
+  alternates: { canonical: "https://www.hashtrickstechnologies.com/careers" },
   openGraph: {
     title: "Careers — Hashtricks Technologies",
     description: "Build AI-powered software with a senior team at Hashtricks Technologies, Coimbatore.",
-    url: "https://hashtricks.tech/careers",
+    url: "https://www.hashtrickstechnologies.com/careers",
   },
 };
 

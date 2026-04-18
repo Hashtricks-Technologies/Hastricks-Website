@@ -9,11 +9,11 @@ import { CtaBand } from "@/components/sections/cta-band";
 export const metadata: Metadata = {
   title: "About",
   description: "Who we are, what we believe, and how we work at Hashtricks Technologies.",
-  alternates: { canonical: "https://hashtricks.tech/about" },
+  alternates: { canonical: "https://www.hashtrickstechnologies.com/about" },
   openGraph: {
     title: "About — Hashtricks Technologies",
     description: "Who we are, what we believe, and how we work at Hashtricks Technologies.",
-    url: "https://hashtricks.tech/about",
+    url: "https://www.hashtrickstechnologies.com/about",
   },
 };
 

@@ -4,7 +4,7 @@ import { placeholderWork } from "@/lib/data/placeholder-work";
 import { placeholderBlog } from "@/lib/data/placeholder-blog";
 import { getPosts, getCaseStudies } from "@/lib/sanity/queries";
 
-const base = "https://hashtricks.tech";
+const base = "https://www.hashtrickstechnologies.com";
 const staticPaths = ["", "/services", "/about", "/work", "/blog", "/careers", "/contact"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

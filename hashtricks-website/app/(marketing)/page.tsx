@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/sections/hero";
 
 export const metadata: Metadata = {
-  title: "Hashtricks Technologies — Custom Software & AI Systems",
+  title: "Software Development Company in Coimbatore — Hashtricks Technologies",
   description:
-    "We build custom software and AI-powered systems that reduce manual work and help growing businesses operate smarter. Based in Coimbatore, India.",
-  alternates: { canonical: "https://hashtricks.tech" },
+    "Hashtricks Technologies is a software development company in Coimbatore building custom software, web apps, and AI automation systems for growing businesses across India.",
+  alternates: { canonical: "https://www.hashtrickstechnologies.com" },
   openGraph: {
-    title: "Hashtricks Technologies — Custom Software & AI Systems",
+    title: "Software Development Company in Coimbatore — Hashtricks Technologies",
     description:
-      "Custom software and AI-powered systems for growing businesses. Based in Coimbatore, India.",
-    url: "https://hashtricks.tech",
+      "Custom software, AI automation, and web development from Coimbatore. We help businesses across India reduce manual work and operate smarter.",
+    url: "https://www.hashtrickstechnologies.com",
   },
 };
 import { ClientStrip } from "@/components/sections/client-strip";

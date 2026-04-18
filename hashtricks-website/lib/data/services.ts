@@ -28,7 +28,7 @@ export const services: Service[] = [
     slug: "custom-software",
     title: "Custom Software Development",
     short: "Purpose-built software that fits your business exactly — no compromises, no feature bloat.",
-    long: "Off-the-shelf tools force your team to work around them. We build software that works the way your business actually works — from internal operational tools to client-facing platforms, designed end-to-end and owned entirely by you.",
+    long: "Off-the-shelf tools force your team to work around them. As a custom software development company in Coimbatore, we build software that works the way your business actually works — from internal operational tools to client-facing platforms, designed end-to-end and owned entirely by you.",
     icon: Code2,
     features: [
       {
@@ -192,7 +192,7 @@ export const services: Service[] = [
     slug: "ai-automation",
     title: "AI-Powered Process Automation",
     short: "Automate the manual, repetitive work slowing your team down — with AI that handles exceptions, not just rules.",
-    long: "We identify high-leverage processes — invoice processing, lead triage, document extraction, support ticket routing — and build automations that compound in value over time. Unlike basic RPA, our automations understand context and handle edge cases intelligently.",
+    long: "Based in Coimbatore, we work with businesses across India to identify high-leverage processes — invoice processing, lead triage, document extraction, support ticket routing — and build AI automation systems that compound in value over time. Unlike basic RPA, our automations understand context and handle edge cases intelligently.",
     icon: Workflow,
     features: [
       {

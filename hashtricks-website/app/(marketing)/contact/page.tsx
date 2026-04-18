@@ -8,11 +8,11 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Book a call or send us your project brief. We reply within one business day.",
-  alternates: { canonical: "https://hashtricks.tech/contact" },
+  alternates: { canonical: "https://www.hashtrickstechnologies.com/contact" },
   openGraph: {
     title: "Contact — Hashtricks Technologies",
     description: "Book a call or send us your project brief. We reply within one business day.",
-    url: "https://hashtricks.tech/contact",
+    url: "https://www.hashtrickstechnologies.com/contact",
   },
 };
 

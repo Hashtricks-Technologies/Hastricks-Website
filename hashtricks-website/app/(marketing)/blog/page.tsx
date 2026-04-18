@@ -8,11 +8,11 @@ import { SunHorizon } from "@/components/brand/sun-horizon";
 export const metadata: Metadata = {
   title: "Blog",
   description: "Notes on building software, AI systems, and growing a tech company from Coimbatore.",
-  alternates: { canonical: "https://hashtricks.tech/blog" },
+  alternates: { canonical: "https://www.hashtrickstechnologies.com/blog" },
   openGraph: {
     title: "Blog — Hashtricks Technologies",
     description: "Notes on building software, AI systems, and growing a tech company from Coimbatore.",
-    url: "https://hashtricks.tech/blog",
+    url: "https://www.hashtrickstechnologies.com/blog",
   },
 };
 

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { PortableText } from "@portabletext/react";
-import { placeholderBlog } from "@/lib/data/placeholder-blog";
+import { placeholderBlog, type BlogSection } from "@/lib/data/placeholder-blog";
 import { getPosts, getPost } from "@/lib/sanity/queries";
 import { SunHorizon } from "@/components/brand/sun-horizon";
 
@@ -25,9 +25,12 @@ export async function generateMetadata({
   const fallback = placeholderBlog.find((p) => p.slug === slug);
   const item = cms ?? fallback;
   if (!item) return {};
+  const description = cms?.excerpt ?? fallback?.excerpt ?? "";
   return {
     title: item.title,
-    description: cms?.excerpt ?? fallback?.excerpt ?? "",
+    description,
+    alternates: { canonical: `https://www.hashtrickstechnologies.com/blog/${slug}` },
+    openGraph: { title: item.title, description, url: `https://www.hashtrickstechnologies.com/blog/${slug}` },
   };
 }
 
@@ -95,6 +98,8 @@ export default async function BlogDetailPage({
         <div className="prose-invert">
           {cms?.body ? (
             <PortableText value={cms.body as never} />
+          ) : fallback?.content ? (
+            <PlaceholderContent sections={fallback.content} />
           ) : (
             <>
               <h2>Introduction</h2>
@@ -102,12 +107,73 @@ export default async function BlogDetailPage({
                 This is a placeholder article — add real content in Sanity Studio at{" "}
                 <code>/studio</code>.
               </p>
-              <h2>Key Takeaways</h2>
-              <p>Replace this placeholder with your actual article content.</p>
             </>
           )}
         </div>
       </section>
     </>
+  );
+}
+
+function PlaceholderContent({ sections }: { sections: BlogSection[] }) {
+  return (
+    <div className="space-y-6">
+      {sections.map((s, i) => {
+        if (s.type === "h2") {
+          return (
+            <h2
+              key={i}
+              className="mt-10 font-display text-2xl md:text-3xl font-bold tracking-tight text-[var(--color-neutral)]"
+            >
+              {s.text}
+            </h2>
+          );
+        }
+        if (s.type === "h3") {
+          return (
+            <h3
+              key={i}
+              className="mt-6 font-display text-lg md:text-xl font-semibold text-[var(--color-neutral)]"
+            >
+              {s.text}
+            </h3>
+          );
+        }
+        if (s.type === "p") {
+          return (
+            <p key={i} className="text-base md:text-lg text-[var(--color-neutral)]/80 leading-relaxed">
+              {s.text}
+            </p>
+          );
+        }
+        if (s.type === "ul") {
+          return (
+            <ul key={i} className="space-y-3 mt-4">
+              {s.items.map((item, j) => (
+                <li key={j} className="flex items-start gap-3 text-base text-[var(--color-neutral)]/75">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-primary)]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          );
+        }
+        if (s.type === "callout") {
+          return (
+            <div
+              key={i}
+              className="relative overflow-hidden rounded-2xl border border-[var(--color-primary)]/30 bg-[var(--color-secondary)]/60 p-6 md:p-8 mt-8"
+            >
+              <div
+                aria-hidden
+                className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_0%_50%,rgba(241,109,52,0.12),transparent_60%)]"
+              />
+              <p className="text-base text-[var(--color-neutral)]/85 leading-relaxed">{s.text}</p>
+            </div>
+          );
+        }
+        return null;
+      })}
+    </div>
   );
 }

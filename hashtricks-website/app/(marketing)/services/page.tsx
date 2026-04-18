@@ -7,11 +7,11 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Custom software, AI, cloud, and more — nine capabilities from a senior team that ships.",
-  alternates: { canonical: "https://hashtricks.tech/services" },
+  alternates: { canonical: "https://www.hashtrickstechnologies.com/services" },
   openGraph: {
     title: "Services — Hashtricks Technologies",
     description: "Custom software, AI, cloud, and more — nine capabilities from a senior team that ships.",
-    url: "https://hashtricks.tech/services",
+    url: "https://www.hashtrickstechnologies.com/services",
   },
 };
 

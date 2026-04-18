@@ -30,13 +30,13 @@ export function Hero() {
             </span>
 
             <h1 className="mt-8 text-display-xl text-[var(--color-neutral)]">
-              Custom software &amp;{" "}
-              <span className="italic font-normal text-[var(--color-sky)]">AI-powered systems</span>{" "}
-              for teams that want to move <span className="text-[var(--color-primary)]">faster</span>.
+              Software development &amp;{" "}
+              <span className="italic font-normal text-[var(--color-sky)]">AI automation</span>{" "}
+              for businesses that want to move <span className="text-[var(--color-primary)]">faster</span>.
             </h1>
 
             <p className="mt-8 max-w-xl text-lg md:text-xl text-[var(--color-neutral)]/75 leading-relaxed">
-              We design, build, and deploy AI-native software end-to-end — so your team spends less time on manual work and more time on what actually grows the business.
+              A software development company in Coimbatore — we design, build, and deploy custom software and AI automation systems end-to-end, so your team spends less time on manual work and more time on what actually grows the business.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-3">
