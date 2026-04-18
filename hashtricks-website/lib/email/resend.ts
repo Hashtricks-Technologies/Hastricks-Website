@@ -9,7 +9,7 @@ export async function sendContactEmail(input: ContactInput) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const to = process.env.CONTACT_TO_EMAIL ?? company.email;
   return resend.emails.send({
-    from: "Hashtricks Site <noreply@hashtricks.tech>",
+    from: "Hashtricks Site <noreply@hashtrickstechnologies.com>",
     to,
     replyTo: input.email,
     subject: `New enquiry — ${input.service} — ${input.name}`,
