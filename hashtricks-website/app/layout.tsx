@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Geist, JetBrains_Mono } from "next/font/google";
+import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
 const jbMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jb-mono", display: "swap" });
 
 export const metadata: Metadata = {
@@ -31,7 +35,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${geist.variable} ${jbMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${spaceGrotesk.variable} ${jbMono.variable} h-full antialiased`}
     >
       <body className="grain min-h-full flex flex-col bg-[var(--color-surface)] text-[var(--color-neutral)]">
         {children}
