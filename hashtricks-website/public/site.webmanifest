@@ -1,0 +1,16 @@
+{
+  "name": "Hashtricks Technologies",
+  "short_name": "Hashtricks",
+  "description": "Custom software and AI-powered systems for growing businesses.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#161E54",
+  "theme_color": "#F16D34",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -1,31 +1,49 @@
 import { values } from "@/lib/data/values";
-import { HashGlyph } from "@/components/brand/hash-glyph";
+import { SectionHeading } from "@/components/layout/section-heading";
 
 export function WhyUs() {
   return (
-    <section className="mx-auto max-w-[1280px] px-5 py-24">
-      <div className="max-w-2xl">
-        <p className="text-sm text-[var(--color-accent)] font-mono flex items-center gap-2">
-          <HashGlyph /> why hashtricks
-        </p>
-        <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold tracking-tight">
-          Built for the teams that ship.
-        </h2>
-      </div>
-      <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {values.map((v) => {
-          const Icon = v.icon;
-          return (
-            <div
-              key={v.title}
-              className="rounded-2xl border border-[var(--color-surface-border)] bg-[var(--color-surface-muted)]/40 p-6 hover:border-[var(--color-accent)]/30 transition-colors"
-            >
-              <Icon className="h-6 w-6 text-[var(--color-accent)]" />
-              <h3 className="mt-4 font-display text-lg font-semibold">{v.title}</h3>
-              <p className="mt-2 text-sm text-[var(--color-neutral)]/60">{v.body}</p>
-            </div>
-          );
-        })}
+    <section className="relative border-y border-[var(--color-surface-border)]/60 bg-[var(--color-secondary)]/30 py-24 md:py-32">
+      <div className="mx-auto max-w-[1280px] px-5">
+        <SectionHeading
+          index="02"
+          eyebrow="Why Hashtricks"
+          title={
+            <>
+              Built for the teams that{" "}
+              <span className="italic font-normal text-[var(--color-sky)]">ship</span>.
+            </>
+          }
+          description="We're small on purpose. No layers, no junior-only squads — just senior people who know how to take a hard problem to production."
+        />
+
+        <div className="mt-20 grid gap-0 md:grid-cols-2 stagger-children">
+          {values.map((v, i) => {
+            const Icon = v.icon;
+            const num = (i + 1).toString().padStart(2, "0");
+            return (
+              <article
+                key={v.title}
+                className="group relative flex gap-8 border-t border-[var(--color-surface-border)]/70 py-10 md:py-12 pr-6 first:md:border-t-0 md:[&:nth-child(2)]:border-t-0 md:even:pl-10 md:odd:border-r md:odd:border-r-[var(--color-surface-border)]/70"
+              >
+                <span className="text-numeral text-[clamp(3rem,8vw,6rem)] font-bold leading-none text-[var(--color-primary)]/30 group-hover:text-[var(--color-primary)] transition-colors">
+                  {num}
+                </span>
+                <div className="flex-1 pt-2">
+                  <div className="flex items-center gap-3">
+                    <Icon className="h-5 w-5 text-[var(--color-primary)]" />
+                    <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-[var(--color-neutral)]">
+                      {v.title}
+                    </h3>
+                  </div>
+                  <p className="mt-4 text-base md:text-lg text-[var(--color-neutral)]/70 leading-relaxed max-w-lg">
+                    {v.body}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

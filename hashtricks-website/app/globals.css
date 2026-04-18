@@ -11,13 +11,19 @@
   --color-surface: #161E54;
   --color-surface-muted: #1E2866;
   --color-surface-border: #2E3975;
+  --color-sky: #BBE0EF;
 
   --font-sans: var(--font-lexend), system-ui, sans-serif;
   --font-display: var(--font-darker-grotesque), var(--font-lexend), system-ui, sans-serif;
   --font-mono: var(--font-jb-mono), ui-monospace, monospace;
 
+  --shadow-soft: 0 30px 80px -40px rgba(0, 0, 0, 0.6);
+
   --animate-gradient-pan: gradient-pan 12s ease infinite;
   --animate-fade-up: fade-up 0.6s ease-out both;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-sun-rise: sun-rise 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-grow-line: grow-line 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 
   @keyframes gradient-pan {
     0%, 100% { background-position: 0% 50%; }
@@ -27,6 +33,21 @@
   @keyframes fade-up {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes sun-rise {
+    from { opacity: 0; transform: translate3d(0, 40px, 0) scale(0.9); }
+    to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+  }
+
+  @keyframes grow-line {
+    from { transform: scaleX(0); opacity: 0; }
+    to { transform: scaleX(1); opacity: 1; }
   }
 }
 
@@ -40,8 +61,100 @@
   background-image: linear-gradient(135deg, #F16D34 0%, #FF986A 100%);
 }
 
+@utility bg-horizon {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(187, 224, 239, 0.55) 20%,
+    #F16D34 50%,
+    rgba(15, 22, 64, 0.8) 80%,
+    transparent 100%
+  );
+}
+
 @utility shadow-glow-accent {
-  box-shadow: 0 0 0 1px rgba(255, 152, 106, 0.35), 0 8px 40px -10px rgba(255, 152, 106, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(255, 152, 106, 0.35),
+    0 8px 40px -10px rgba(255, 152, 106, 0.35);
+}
+
+@utility shadow-glow-primary {
+  box-shadow:
+    0 0 0 1px rgba(241, 109, 52, 0.25),
+    0 18px 60px -15px rgba(241, 109, 52, 0.35);
+}
+
+@utility text-display-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.75rem, 8.5vw, 7rem);
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+
+@utility text-display-lg {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+@utility text-display-md {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3.2vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+@utility text-numeral {
+  font-family: var(--font-display);
+  font-feature-settings: "tnum" 1, "ss01" 1;
+  font-variant-numeric: tabular-nums;
+}
+
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-sky);
+}
+
+@utility eyebrow-rule {
+  height: 1px;
+  width: 2.5rem;
+  background: linear-gradient(90deg, var(--color-primary), transparent);
+}
+
+@utility horizon-line {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(187, 224, 239, 0.25) 20%,
+    rgba(241, 109, 52, 0.75) 50%,
+    rgba(15, 22, 64, 0.3) 80%,
+    transparent 100%
+  );
+  transform-origin: left center;
+}
+
+@utility reveal {
+  opacity: 0;
+  animation: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@utility shiny-border {
+  position: relative;
+  background-clip: padding-box;
+  border: 1px solid transparent;
 }
 
 :root {
@@ -63,20 +176,29 @@ body {
   min-height: 100%;
 }
 
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
+
 .grain::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.05'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.08'/></svg>");
   mix-blend-mode: overlay;
-  opacity: 0.5;
+  opacity: 0.55;
   z-index: 1;
 }
 
 .prose-invert {
   color: rgba(249, 250, 251, 0.85);
-  line-height: 1.7;
+  line-height: 1.75;
+  font-size: 1.0625rem;
+}
+.prose-invert > * + * {
+  margin-top: 1.2em;
 }
 .prose-invert h1,
 .prose-invert h2,
@@ -84,10 +206,59 @@ body {
   color: #F9FAFB;
   font-family: var(--font-display);
   letter-spacing: -0.02em;
+  margin-top: 2em;
+}
+.prose-invert h2 {
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 700;
+}
+.prose-invert h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 .prose-invert a {
   color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: rgba(241, 109, 52, 0.35);
+  text-underline-offset: 4px;
 }
 .prose-invert a:hover {
   color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
+}
+.prose-invert blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding-left: 1.25rem;
+  font-style: italic;
+  color: rgba(249, 250, 251, 0.95);
+}
+.prose-invert code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: rgba(15, 22, 64, 0.6);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid var(--color-surface-border);
+}
+
+.stagger-children > * {
+  opacity: 0;
+  animation: fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.12s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.28s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.36s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.44s; }
+.stagger-children > *:nth-child(7) { animation-delay: 0.52s; }
+.stagger-children > *:nth-child(8) { animation-delay: 0.6s; }
+.stagger-children > *:nth-child(9) { animation-delay: 0.68s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .stagger-children > * {
+    animation: none !important;
+    opacity: 1 !important;
+  }
 }

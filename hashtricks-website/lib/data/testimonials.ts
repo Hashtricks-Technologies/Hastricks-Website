@@ -8,23 +8,16 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Hashtricks shipped a working AI triage system in six weeks that now handles 80% of our inbound support volume. The team understood our operations better than our own tooling did.",
-    author: "Placeholder Name",
-    role: "Head of Ops",
-    company: "Placeholder Co.",
-  },
-  {
-    quote:
-      "They became a genuine extension of our team. Senior engineers, sharp opinions, and a bias for shipping.",
-    author: "Placeholder Name",
+      "Working with Hashtricks was seamless. They built exactly the ordering platform we envisioned — customers can now order from multiple kitchens in a single checkout, and our vendors love the dashboard. The impact on wait times was immediate.",
+    author: "Saravannan",
     role: "CTO",
-    company: "Placeholder Co.",
+    company: "Eateszy",
   },
   {
     quote:
-      "We finally retired three spreadsheets and a legacy tool. The new platform paid for itself in a quarter.",
-    author: "Placeholder Name",
-    role: "COO",
-    company: "Placeholder Co.",
+      "They took our idea and turned it into a beautiful, fully functional store. Every detail was handled with care — from the product pages to checkout. Our wooden elephant collection now reaches customers all across India.",
+    author: "Thanus Murugananthan",
+    role: "Founder",
+    company: "The Urban Elephant",
   },
 ];

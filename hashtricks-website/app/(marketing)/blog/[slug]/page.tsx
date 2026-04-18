@@ -1,8 +1,11 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { PortableText } from "@portabletext/react";
 import { placeholderBlog } from "@/lib/data/placeholder-blog";
-import { getPost, getPosts } from "@/lib/sanity/queries";
+import { getPosts, getPost } from "@/lib/sanity/queries";
+import { SunHorizon } from "@/components/brand/sun-horizon";
 
 export const revalidate = 60;
 
@@ -20,12 +23,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const cms = await getPost(slug);
   const fallback = placeholderBlog.find((p) => p.slug === slug);
-  const post = cms ?? fallback;
-  if (!post) return {};
-  return { title: post.title, description: post.excerpt };
+  const item = cms ?? fallback;
+  if (!item) return {};
+  return {
+    title: item.title,
+    description: cms?.excerpt ?? fallback?.excerpt ?? "",
+  };
 }
 
-export default async function BlogPostPage({
+export default async function BlogDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
@@ -33,50 +39,75 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const cms = await getPost(slug);
   const fallback = placeholderBlog.find((p) => p.slug === slug);
-  const post = cms ?? fallback;
-  if (!post) notFound();
+  if (!cms && !fallback) notFound();
 
-  const tags = cms?.categories ?? fallback?.tags ?? [];
+  const title = cms?.title ?? fallback?.title ?? "";
+  const excerpt = cms?.excerpt ?? fallback?.excerpt ?? "";
   const date = cms?.publishedAt ?? fallback?.date ?? "";
-  const cmsAuthor = cms?.author as { name?: string } | string | undefined;
-  const authorName =
-    typeof cmsAuthor === "string"
-      ? cmsAuthor
-      : cmsAuthor?.name ?? fallback?.author ?? "Hashtricks Team";
+  const readingTime = fallback?.readingTime;
+  const tags: string[] = cms?.categories ?? fallback?.tags ?? [];
 
   return (
-    <article className="mx-auto max-w-3xl px-5 pt-24 pb-24">
-      <div className="flex items-center gap-2 text-xs font-mono text-[var(--color-accent)]">
-        {tags.map((t) => (
-          <span key={String(t)}>#{String(t)}</span>
-        ))}
-      </div>
-      <h1 className="mt-4 font-display text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight">
-        {post.title}
-      </h1>
-      <p className="mt-4 text-sm text-[var(--color-neutral)]/50">
-        {date
-          ? new Date(date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-          : ""}
-        {fallback?.readingTime ? ` · ${fallback.readingTime}` : ""} · {authorName}
-      </p>
-      <div className="mt-10 prose-invert space-y-6">
-        {cms?.body ? (
-          <PortableText value={cms.body as never} />
-        ) : (
-          <>
-            <p>{post.excerpt}</p>
-            <p>
-              Placeholder post body. Add real content in Sanity Studio (or update{" "}
-              <code className="font-mono">lib/data/placeholder-blog.ts</code>).
+    <>
+      <section className="relative isolate overflow-hidden">
+        <SunHorizon position="top" intensity="soft" />
+        <div className="mx-auto max-w-3xl px-5 pt-20 pb-12 md:pt-28">
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-[var(--color-neutral)]/55 hover:text-[var(--color-primary)] transition-colors"
+          >
+            <ArrowLeft className="h-3 w-3" /> All posts
+          </Link>
+
+          <div className="mt-10 flex flex-wrap items-center gap-3 reveal">
+            {tags.map((t) => (
+              <span
+                key={t}
+                className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-[var(--color-sky)] border border-[var(--color-sky)]/30 rounded-full px-3 py-1"
+              >
+                {t}
+              </span>
+            ))}
+            {date && (
+              <span className="font-mono text-xs text-[var(--color-neutral)]/45">
+                {new Date(date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+                {readingTime ? ` · ${readingTime}` : ""}
+              </span>
+            )}
+          </div>
+
+          <h1 className="mt-6 text-display-xl text-[var(--color-neutral)] reveal">{title}</h1>
+
+          {excerpt && (
+            <p className="mt-6 text-lg md:text-xl text-[var(--color-neutral)]/75 leading-relaxed reveal">
+              {excerpt}
             </p>
-          </>
-        )}
-      </div>
-    </article>
+          )}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-3xl px-5 pb-24">
+        <div className="horizon-line w-full mb-10" />
+        <div className="prose-invert">
+          {cms?.body ? (
+            <PortableText value={cms.body as never} />
+          ) : (
+            <>
+              <h2>Introduction</h2>
+              <p>
+                This is a placeholder article — add real content in Sanity Studio at{" "}
+                <code>/studio</code>.
+              </p>
+              <h2>Key Takeaways</h2>
+              <p>Replace this placeholder with your actual article content.</p>
+            </>
+          )}
+        </div>
+      </section>
+    </>
   );
 }

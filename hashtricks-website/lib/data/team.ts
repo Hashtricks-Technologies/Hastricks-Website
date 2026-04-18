@@ -5,8 +5,15 @@ export type TeamMember = {
   linkedin?: string;
 };
 
-export const team: TeamMember[] = Array.from({ length: 10 }, (_, i) => ({
-  name: `Team Member ${i + 1}`,
-  role: i === 0 ? "Founder & CEO" : i === 1 ? "CTO" : i < 5 ? "Senior Engineer" : "Engineer",
-  bio: "Placeholder bio — replace with real content before launch.",
-}));
+export const team: TeamMember[] = [
+  {
+    name: "Sri Manikandan R",
+    role: "Co-Founder & CEO",
+    bio: "",
+  },
+  {
+    name: "Sai Sidharthan H",
+    role: "Co-Founder & COO",
+    bio: "",
+  },
+];

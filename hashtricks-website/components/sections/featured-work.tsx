@@ -1,53 +1,102 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { HashGlyph } from "@/components/brand/hash-glyph";
+import { SectionHeading } from "@/components/layout/section-heading";
 import { placeholderWork } from "@/lib/data/placeholder-work";
 
 export function FeaturedWork() {
-  const featured = placeholderWork.slice(0, 3);
+  const [hero, ...rest] = placeholderWork.slice(0, 3);
+
   return (
-    <section className="mx-auto max-w-[1280px] px-5 py-24">
-      <div className="flex items-end justify-between flex-wrap gap-4">
-        <div className="max-w-2xl">
-          <p className="text-sm text-[var(--color-accent)] font-mono flex items-center gap-2">
-            <HashGlyph /> featured work
-          </p>
-          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold tracking-tight">
-            Outcomes, not output.
-          </h2>
+    <section className="relative border-y border-[var(--color-surface-border)]/60 bg-[var(--color-secondary)]/30 py-24 md:py-32">
+      <div className="mx-auto max-w-[1280px] px-5">
+        <SectionHeading
+          index="03"
+          eyebrow="Selected work"
+          title={
+            <>
+              Outcomes,{" "}
+              <span className="italic font-normal text-[var(--color-sky)]">not output</span>.
+            </>
+          }
+          description="A small slice of what we've shipped. Every engagement is measured in time saved, revenue unlocked, or users retained."
+          action={
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-[var(--color-neutral)]/70 hover:text-[var(--color-primary)] transition-colors"
+            >
+              All case studies <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          }
+        />
+
+        <div className="mt-16 grid gap-5 lg:grid-cols-5 stagger-children">
+          {hero && (
+            <Link
+              href={`/work/${hero.slug}`}
+              className="group relative lg:col-span-3 overflow-hidden rounded-2xl border border-[var(--color-surface-border)] bg-[var(--color-surface-muted)]/40 transition hover:border-[var(--color-primary)]/60"
+            >
+              <div className="relative aspect-[5/4] md:aspect-[7/5] overflow-hidden border-b border-[var(--color-surface-border)]">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(241,109,52,0.35),transparent_55%),radial-gradient(circle_at_80%_70%,rgba(187,224,239,0.25),transparent_55%),linear-gradient(180deg,rgba(15,22,64,0.4)_0%,rgba(22,30,84,0.8)_100%)]" />
+                <div className="absolute left-6 top-6 flex gap-2">
+                  <span className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-[var(--color-sky)] border border-[var(--color-sky)]/30 rounded-full px-3 py-1">
+                    Featured
+                  </span>
+                  <span className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-[var(--color-neutral)]/70 border border-[var(--color-surface-border)] rounded-full px-3 py-1 bg-[var(--color-surface)]/40">
+                    {hero.industry}
+                  </span>
+                </div>
+                <div className="absolute bottom-6 right-6 text-right">
+                  <p className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-[var(--color-neutral)]/60">
+                    Outcome
+                  </p>
+                  <p className="mt-1 text-numeral text-2xl md:text-3xl font-bold text-[var(--color-primary)]">
+                    {hero.metric}
+                  </p>
+                </div>
+              </div>
+              <div className="p-7">
+                <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight group-hover:text-[var(--color-primary)] transition-colors">
+                  {hero.title}
+                </h3>
+                <p className="mt-3 text-base text-[var(--color-neutral)]/70 leading-relaxed max-w-xl">
+                  {hero.summary}
+                </p>
+                <span className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-[var(--color-primary)]">
+                  Read case study
+                  <ArrowUpRight className="h-4 w-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+                </span>
+              </div>
+            </Link>
+          )}
+
+          <div className="lg:col-span-2 grid gap-5">
+            {rest.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/work/${item.slug}`}
+                className="group relative overflow-hidden rounded-2xl border border-[var(--color-surface-border)] bg-[var(--color-surface-muted)]/40 p-6 transition hover:border-[var(--color-primary)]/60"
+              >
+                <div className="flex items-start justify-between">
+                  <span className="font-mono text-[0.65rem] uppercase tracking-[0.22em] text-[var(--color-neutral)]/60">
+                    {item.industry}
+                  </span>
+                  <ArrowUpRight className="h-4 w-4 text-[var(--color-neutral)]/40 group-hover:text-[var(--color-primary)] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                </div>
+                <h3 className="mt-6 font-display text-lg md:text-xl font-bold tracking-tight group-hover:text-[var(--color-primary)] transition-colors">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm text-[var(--color-neutral)]/65 leading-relaxed">
+                  {item.summary}
+                </p>
+                <div className="mt-5 flex items-center gap-3">
+                  <span className="text-numeral text-xl font-bold text-[var(--color-primary)]">
+                    {item.metric}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-        <Link
-          href="/work"
-          className="text-sm text-[var(--color-neutral)]/70 hover:text-[var(--color-accent)] inline-flex items-center gap-1 transition-colors"
-        >
-          See all work <ArrowUpRight className="h-4 w-4" />
-        </Link>
-      </div>
-      <div className="mt-14 grid gap-6 md:grid-cols-3">
-        {featured.map((item) => (
-          <Link
-            key={item.slug}
-            href={`/work/${item.slug}`}
-            className="group rounded-2xl border border-[var(--color-surface-border)] bg-[var(--color-surface-muted)]/40 overflow-hidden transition hover:shadow-glow-accent hover:-translate-y-0.5 hover:border-[var(--color-accent)]/40"
-          >
-            <div className="aspect-[4/3] bg-brand-gradient/10 border-b border-[var(--color-surface-border)] grid place-items-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(241,109,52,0.25),transparent_60%),radial-gradient(circle_at_70%_70%,rgba(187,224,239,0.2),transparent_60%)]" />
-              <span className="relative font-mono text-sm text-[var(--color-accent)]/70 tracking-wider">
-                {item.industry.toUpperCase()}
-              </span>
-            </div>
-            <div className="p-5">
-              <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-neutral)]/50">
-                {item.industry}
-              </p>
-              <h3 className="mt-2 font-display text-lg font-semibold group-hover:text-[var(--color-accent)] transition-colors">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm text-[var(--color-neutral)]/60">{item.summary}</p>
-              <p className="mt-3 text-xs font-mono text-[var(--color-accent)]">{item.metric}</p>
-            </div>
-          </Link>
-        ))}
       </div>
     </section>
   );

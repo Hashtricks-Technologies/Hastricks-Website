@@ -1,22 +1,30 @@
-const placeholders = ["Acme Inc", "Lumen Co", "Northstar", "Brickhouse", "Vanta", "Relay"];
+import { Marquee } from "@/components/brand/marquee";
+
+const clients = [
+  "Eateszy",
+  "The Urban Elephant",
+  "DentiQ",
+];
 
 export function ClientStrip() {
   return (
-    <section className="border-y border-[var(--color-surface-border)]/60 py-10">
-      <div className="mx-auto max-w-[1280px] px-5">
-        <p className="text-center text-xs uppercase tracking-[0.2em] text-[var(--color-neutral)]/50">
-          Trusted by teams at
+    <section className="relative border-y border-[var(--color-surface-border)]/60 bg-[var(--color-secondary)]/30 py-8 overflow-hidden">
+      <div className="mx-auto max-w-[1280px] px-5 flex items-center gap-8 flex-wrap md:flex-nowrap">
+        <p className="shrink-0 eyebrow">
+          <span className="eyebrow-rule" />
+          <span>Trusted by teams at</span>
         </p>
-        <div className="mt-6 grid grid-cols-3 md:grid-cols-6 gap-6 items-center">
-          {placeholders.map((label) => (
-            <div
+        <Marquee className="flex-1" speed="slow">
+          {clients.map((label) => (
+            <span
               key={label}
-              className="text-center font-mono text-sm text-[var(--color-neutral)]/40 hover:text-[var(--color-neutral)]/70 transition-colors"
+              className="font-display text-xl md:text-2xl font-bold tracking-tight text-[var(--color-neutral)]/45 hover:text-[var(--color-sky)] transition-colors whitespace-nowrap flex items-center gap-16"
             >
               {label}
-            </div>
+              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[var(--color-primary)]/70" />
+            </span>
           ))}
-        </div>
+        </Marquee>
       </div>
     </section>
   );

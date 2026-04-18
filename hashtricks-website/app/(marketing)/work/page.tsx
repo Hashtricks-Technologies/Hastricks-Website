@@ -3,12 +3,18 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { placeholderWork } from "@/lib/data/placeholder-work";
 import { getCaseStudies } from "@/lib/sanity/queries";
-import { HashGlyph } from "@/components/brand/hash-glyph";
+import { SunHorizon } from "@/components/brand/sun-horizon";
 import { CtaBand } from "@/components/sections/cta-band";
 
 export const metadata: Metadata = {
   title: "Work",
   description: "Selected case studies from Hashtricks Technologies.",
+  alternates: { canonical: "https://hashtricks.tech/work" },
+  openGraph: {
+    title: "Work — Hashtricks Technologies",
+    description: "Selected case studies from Hashtricks Technologies.",
+    url: "https://hashtricks.tech/work",
+  },
 };
 
 export const revalidate = 60;
@@ -41,46 +47,65 @@ export default async function WorkPage() {
 
   return (
     <>
-      <section className="mx-auto max-w-[1280px] px-5 pt-24 pb-12">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-surface-border)]/80 bg-[var(--color-surface-muted)]/40 backdrop-blur px-3 py-1 text-xs text-[var(--color-neutral)]/75">
-          <HashGlyph /> work
+      <section className="relative isolate overflow-hidden">
+        <SunHorizon position="top" intensity="soft" />
+        <div className="mx-auto max-w-[1280px] px-5 pt-24 pb-16 md:pt-32 md:pb-20">
+          <span className="eyebrow reveal">
+            <span className="text-numeral text-[var(--color-primary)]">01</span>
+            <span className="eyebrow-rule" />
+            <span>Selected work · {items.length.toString().padStart(2, "0")}</span>
+          </span>
+          <h1 className="mt-8 text-display-xl text-[var(--color-neutral)] max-w-5xl reveal">
+            Case studies.{" "}
+            <span className="italic font-normal text-[var(--color-sky)]">Shipped, measured, maintained.</span>
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg md:text-xl text-[var(--color-neutral)]/75 leading-relaxed reveal">
+            Selected engagements. Every one of them in production with real users and real outcomes.
+          </p>
         </div>
-        <h1 className="mt-6 font-display text-4xl md:text-6xl font-bold tracking-tight">Case studies</h1>
-        <p className="mt-4 text-lg text-[var(--color-neutral)]/70 max-w-2xl">
-          Selected engagements. Each one shipped, measured, and maintained.
-        </p>
       </section>
 
-      <section className="mx-auto max-w-[1280px] px-5 pb-16">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {items.map((item) => (
-            <Link
-              key={item.slug}
-              href={`/work/${item.slug}`}
-              className="group rounded-2xl border border-[var(--color-surface-border)] bg-[var(--color-surface-muted)]/40 overflow-hidden transition hover:shadow-glow-accent hover:-translate-y-0.5 hover:border-[var(--color-accent)]/40"
-            >
-              <div className="aspect-[4/3] bg-brand-gradient/10 border-b border-[var(--color-surface-border)] grid place-items-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(241,109,52,0.25),transparent_60%),radial-gradient(circle_at_70%_70%,rgba(187,224,239,0.2),transparent_60%)]" />
-                <span className="relative font-mono text-sm text-[var(--color-accent)]/70 tracking-wider">
-                  {item.industry.toUpperCase() || "CASE STUDY"}
+      <section className="mx-auto max-w-[1280px] px-5 pb-20">
+        <div className="horizon-line w-full reveal" />
+        <ul className="mt-2 divide-y divide-[var(--color-surface-border)]/70 stagger-children">
+          {items.map((item, i) => (
+            <li key={item.slug}>
+              <Link
+                href={`/work/${item.slug}`}
+                className="group grid gap-6 py-8 md:py-10 md:grid-cols-12 items-center"
+              >
+                <span className="text-numeral font-mono text-xs uppercase tracking-[0.22em] text-[var(--color-neutral)]/45 md:col-span-1">
+                  {(i + 1).toString().padStart(2, "0")}
                 </span>
-              </div>
-              <div className="p-5">
-                {item.industry && (
-                  <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-neutral)]/50">{item.industry}</p>
-                )}
-                <h3 className="mt-2 font-display text-lg font-semibold group-hover:text-[var(--color-accent)] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm text-[var(--color-neutral)]/60">{item.summary}</p>
-                {item.metric && <p className="mt-3 text-xs font-mono text-[var(--color-accent)]">{item.metric}</p>}
-                <span className="mt-4 inline-flex items-center gap-1 text-sm text-[var(--color-neutral)]/70 group-hover:text-[var(--color-accent)] transition-colors">
-                  Read case study <ArrowUpRight className="h-4 w-4" />
-                </span>
-              </div>
-            </Link>
+                <div className="md:col-span-7">
+                  <h2 className="font-display text-2xl md:text-4xl font-bold tracking-tight text-[var(--color-neutral)] group-hover:text-[var(--color-primary)] transition-colors">
+                    {item.title}
+                  </h2>
+                  <p className="mt-3 text-base text-[var(--color-neutral)]/65 leading-relaxed max-w-2xl">
+                    {item.summary}
+                  </p>
+                </div>
+                <div className="md:col-span-3">
+                  {item.industry && (
+                    <span className="inline-flex items-center gap-2 font-mono text-[0.65rem] uppercase tracking-[0.22em] text-[var(--color-neutral)]/60 border border-[var(--color-surface-border)] rounded-full px-3 py-1">
+                      {item.industry}
+                    </span>
+                  )}
+                  {item.metric && (
+                    <p className="mt-3 text-numeral text-xl font-bold text-[var(--color-primary)]">
+                      {item.metric}
+                    </p>
+                  )}
+                </div>
+                <div className="md:col-span-1 flex md:justify-end">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-surface-border)] text-[var(--color-neutral)]/60 group-hover:border-[var(--color-primary)] group-hover:text-[var(--color-primary)] group-hover:rotate-[-45deg] transition-all duration-500">
+                    <ArrowUpRight className="h-4 w-4" />
+                  </span>
+                </div>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       <CtaBand />
