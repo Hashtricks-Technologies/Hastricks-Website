@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { placeholderBlog } from "@/lib/data/placeholder-blog";
+import { getPosts } from "@/lib/sanity/queries";
 import { HashGlyph } from "@/components/brand/hash-glyph";
 
 export const metadata: Metadata = {
@@ -9,7 +10,36 @@ export const metadata: Metadata = {
   description: "Notes on building software and AI systems.",
 };
 
-export default function BlogPage() {
+export const revalidate = 60;
+
+type PostCard = {
+  slug: string;
+  title: string;
+  excerpt: string;
+  date: string;
+  readingTime?: string;
+  tags: string[];
+};
+
+export default async function BlogPage() {
+  const cmsPosts = await getPosts();
+  const posts: PostCard[] = cmsPosts.length
+    ? cmsPosts.map((p) => ({
+        slug: p.slug,
+        title: p.title,
+        excerpt: p.excerpt,
+        date: p.publishedAt,
+        tags: p.categories ?? [],
+      }))
+    : placeholderBlog.map((p) => ({
+        slug: p.slug,
+        title: p.title,
+        excerpt: p.excerpt,
+        date: p.date,
+        readingTime: p.readingTime,
+        tags: p.tags,
+      }));
+
   return (
     <section className="mx-auto max-w-[1280px] px-5 pt-24 pb-24">
       <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-surface-border)]/80 bg-[var(--color-surface-muted)]/40 backdrop-blur px-3 py-1 text-xs text-[var(--color-neutral)]/75">
@@ -21,7 +51,7 @@ export default function BlogPage() {
       </p>
 
       <div className="mt-14 grid gap-6 md:grid-cols-2">
-        {placeholderBlog.map((post) => (
+        {posts.map((post) => (
           <Link
             key={post.slug}
             href={`/blog/${post.slug}`}
@@ -42,8 +72,8 @@ export default function BlogPage() {
                   year: "numeric",
                   month: "short",
                   day: "numeric",
-                })}{" "}
-                · {post.readingTime}
+                })}
+                {post.readingTime ? ` · ${post.readingTime}` : ""}
               </span>
               <ArrowUpRight className="h-4 w-4" />
             </div>

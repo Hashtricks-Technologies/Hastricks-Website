@@ -11,7 +11,7 @@ const buttonVariants = cva(
         default:
           "bg-[var(--color-primary)] text-[var(--color-primary-fg)] hover:bg-[var(--color-accent)] hover:text-[var(--color-accent-fg)]",
         cta:
-          "bg-[var(--color-accent)] text-[var(--color-accent-fg)] hover:brightness-110 shadow-[0_8px_28px_-10px_rgba(34,211,238,0.55)]",
+          "bg-[var(--color-accent)] text-[var(--color-accent-fg)] hover:brightness-110 shadow-[0_8px_28px_-10px_rgba(255,152,106,0.55)]",
         outline:
           "border border-[var(--color-surface-border)] bg-transparent text-[var(--color-neutral)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]",
         ghost:

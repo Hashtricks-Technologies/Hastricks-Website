@@ -31,7 +31,7 @@ export function FeaturedWork() {
             className="group rounded-2xl border border-[var(--color-surface-border)] bg-[var(--color-surface-muted)]/40 overflow-hidden transition hover:shadow-glow-accent hover:-translate-y-0.5 hover:border-[var(--color-accent)]/40"
           >
             <div className="aspect-[4/3] bg-brand-gradient/10 border-b border-[var(--color-surface-border)] grid place-items-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(37,99,235,0.25),transparent_60%),radial-gradient(circle_at_70%_70%,rgba(34,211,238,0.2),transparent_60%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(241,109,52,0.25),transparent_60%),radial-gradient(circle_at_70%_70%,rgba(187,224,239,0.2),transparent_60%)]" />
               <span className="relative font-mono text-sm text-[var(--color-accent)]/70 tracking-wider">
                 {item.industry.toUpperCase()}
               </span>

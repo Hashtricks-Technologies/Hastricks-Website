@@ -20,7 +20,7 @@ export function WhatsappFloat() {
       rel="noreferrer"
       aria-label="Chat on WhatsApp"
       data-visible={visible}
-      className="group fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-accent)] text-[var(--color-accent-fg)] shadow-[0_12px_36px_-10px_rgba(34,211,238,0.6)] transition-all duration-300 hover:brightness-110 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-surface)] data-[visible=false]:translate-y-24 data-[visible=false]:opacity-0 data-[visible=false]:pointer-events-none"
+      className="group fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-accent)] text-[var(--color-accent-fg)] shadow-[0_12px_36px_-10px_rgba(255,152,106,0.6)] transition-all duration-300 hover:brightness-110 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-surface)] data-[visible=false]:translate-y-24 data-[visible=false]:opacity-0 data-[visible=false]:pointer-events-none"
     >
       <span
         aria-hidden
