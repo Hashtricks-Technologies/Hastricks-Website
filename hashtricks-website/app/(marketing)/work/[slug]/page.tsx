@@ -47,7 +47,7 @@ export default async function WorkDetailPage({
       <section className="mx-auto max-w-3xl px-5 pb-16 space-y-8">
         <div className="rounded-2xl border border-[var(--color-surface-border)] bg-[var(--color-surface-muted)]/40 p-6">
           <p className="text-xs uppercase tracking-[0.2em] text-[var(--color-neutral)]/50">Outcome</p>
-          <p className="mt-2 font-display text-2xl font-bold bg-brand-gradient bg-clip-text text-transparent">
+          <p className="mt-2 font-display text-2xl font-bold text-[var(--color-accent)]">
             {item.metric}
           </p>
         </div>

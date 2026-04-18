@@ -8,7 +8,7 @@ export function Wordmark({ className }: { className?: string }) {
       aria-label="Hashtricks Technologies home"
       className={cn("inline-flex items-center gap-2 group", className)}
     >
-      <span className="font-display text-2xl font-bold leading-none bg-brand-gradient bg-clip-text text-transparent">
+      <span className="font-display text-2xl font-bold leading-none text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">
         #
       </span>
       <span className="font-display text-lg font-semibold tracking-tight text-[var(--color-neutral)] group-hover:text-[var(--color-accent)] transition-colors">

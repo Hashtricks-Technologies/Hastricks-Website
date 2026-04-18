@@ -22,14 +22,14 @@ export function Hero() {
           </div>
           <h1 className="mt-6 font-display text-[2.5rem] leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
             We build custom software and{" "}
-            <span className="bg-brand-gradient bg-clip-text text-transparent">AI-powered systems</span>{" "}
+            <span className="text-[var(--color-primary)]">AI-powered systems</span>{" "}
             that help businesses operate smarter.
           </h1>
           <p className="mt-6 text-lg text-[var(--color-neutral)]/70 max-w-2xl leading-relaxed">
             Reduce manual work, scale efficiently, and unlock the leverage AI gives your team. We design, build, and deploy — end to end.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg">
+            <Button asChild size="lg" variant="cta">
               <a href={company.bookCallUrl} target="_blank" rel="noreferrer">
                 Book a Call <ArrowRight className="h-4 w-4" />
               </a>

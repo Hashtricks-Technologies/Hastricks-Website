@@ -25,7 +25,7 @@ export function ServiceHero({ service }: { service: Service }) {
           </div>
           <p className="mt-6 text-lg text-[var(--color-neutral)]/70 leading-relaxed">{service.long}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg">
+            <Button asChild size="lg" variant="cta">
               <a href={company.bookCallUrl} target="_blank" rel="noreferrer">
                 Book a Call <ArrowRight className="h-4 w-4" />
               </a>

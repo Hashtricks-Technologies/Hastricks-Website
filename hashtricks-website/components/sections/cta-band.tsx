@@ -15,7 +15,7 @@ export function CtaBand() {
           Tell us what you&apos;re working on. We&apos;ll show you what we&apos;d build.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Button asChild size="lg">
+          <Button asChild size="lg" variant="cta">
             <a href={company.bookCallUrl} target="_blank" rel="noreferrer">
               Book a Call <ArrowRight className="h-4 w-4" />
             </a>

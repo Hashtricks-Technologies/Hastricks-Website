@@ -93,7 +93,7 @@ export default function AboutPage() {
               key={stat.label}
               className="rounded-2xl border border-[var(--color-surface-border)] bg-[var(--color-surface-muted)]/40 p-6"
             >
-              <p className="font-display text-3xl md:text-5xl font-bold bg-brand-gradient bg-clip-text text-transparent">
+              <p className="font-display text-3xl md:text-5xl font-bold text-[var(--color-primary)]">
                 {stat.value}
               </p>
               <p className="mt-2 text-xs uppercase tracking-[0.2em] text-[var(--color-neutral)]/50">{stat.label}</p>

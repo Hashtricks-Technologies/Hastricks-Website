@@ -25,7 +25,7 @@ export default function ContactPage() {
         </p>
 
         <div className="mt-8 space-y-3">
-          <Button asChild className="w-full md:w-auto">
+          <Button asChild variant="cta" className="w-full md:w-auto">
             <a href={company.bookCallUrl} target="_blank" rel="noreferrer">
               Book a discovery call
             </a>

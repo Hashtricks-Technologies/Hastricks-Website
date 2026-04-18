@@ -8,10 +8,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-brand-gradient text-[var(--color-primary-fg)] hover:opacity-90 shadow-[0_8px_30px_-10px_rgba(34,211,238,0.5)]",
-        outline: "border border-[var(--color-surface-border)] bg-transparent text-[var(--color-neutral)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]",
-        ghost: "bg-transparent text-[var(--color-neutral)] hover:bg-[var(--color-surface-muted)]",
-        subtle: "bg-[var(--color-surface-muted)] text-[var(--color-neutral)] hover:bg-[var(--color-surface-muted)]/70",
+        default:
+          "bg-[var(--color-primary)] text-[var(--color-primary-fg)] hover:bg-[var(--color-accent)] hover:text-[var(--color-accent-fg)]",
+        cta:
+          "bg-[var(--color-accent)] text-[var(--color-accent-fg)] hover:brightness-110 shadow-[0_8px_28px_-10px_rgba(34,211,238,0.55)]",
+        outline:
+          "border border-[var(--color-surface-border)] bg-transparent text-[var(--color-neutral)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]",
+        ghost:
+          "bg-transparent text-[var(--color-neutral)] hover:bg-[var(--color-surface-muted)]",
+        subtle:
+          "bg-[var(--color-surface-muted)] text-[var(--color-neutral)] hover:bg-[var(--color-surface-muted)]/70",
       },
       size: {
         default: "h-10 px-4",

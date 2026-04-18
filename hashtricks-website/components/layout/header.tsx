@@ -22,7 +22,7 @@ export function Header() {
           ))}
         </nav>
         <div className="hidden md:block">
-          <Button asChild size="sm">
+          <Button asChild size="sm" variant="cta">
             <a href={company.bookCallUrl} target="_blank" rel="noreferrer">
               Book a Call
             </a>

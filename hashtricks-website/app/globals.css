@@ -8,9 +8,9 @@
   --color-accent: #22D3EE;
   --color-accent-fg: #0B1220;
   --color-neutral: #F9FAFB;
-  --color-surface: #0B1220;
-  --color-surface-muted: #111827;
-  --color-surface-border: #1F2937;
+  --color-surface: #111827;
+  --color-surface-muted: #1E2636;
+  --color-surface-border: #2A3344;
 
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-geist), var(--font-inter), system-ui, sans-serif;
@@ -46,7 +46,7 @@
 
 :root {
   color-scheme: dark;
-  --background: #0B1220;
+  --background: #111827;
   --foreground: #F9FAFB;
 }
 
@@ -86,5 +86,8 @@ body {
   letter-spacing: -0.02em;
 }
 .prose-invert a {
+  color: var(--color-primary);
+}
+.prose-invert a:hover {
   color: var(--color-accent);
 }

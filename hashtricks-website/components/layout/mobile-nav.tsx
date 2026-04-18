@@ -29,7 +29,7 @@ export function MobileNav() {
               {item.label}
             </Link>
           ))}
-          <Button asChild className="mt-4">
+          <Button asChild variant="cta" className="mt-4">
             <a href={company.bookCallUrl} target="_blank" rel="noreferrer">
               Book a Call
             </a>
