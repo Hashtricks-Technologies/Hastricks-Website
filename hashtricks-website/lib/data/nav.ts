@@ -31,6 +31,7 @@ export const footerSections = [
       { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
       { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
     ],
   },
 ] as const;

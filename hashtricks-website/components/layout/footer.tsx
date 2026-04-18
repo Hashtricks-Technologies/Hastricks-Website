@@ -101,6 +101,9 @@ export function Footer() {
             <Link href="/privacy" className="hover:text-[var(--color-primary)] transition-colors">
               Privacy Policy
             </Link>
+            <Link href="/terms" className="hover:text-[var(--color-primary)] transition-colors">
+              Terms
+            </Link>
             <p>Founded {company.foundedYear} · {company.location}</p>
           </div>
         </div>
