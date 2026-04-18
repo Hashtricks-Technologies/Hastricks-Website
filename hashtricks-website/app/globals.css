@@ -12,8 +12,8 @@
   --color-surface-muted: #1E2636;
   --color-surface-border: #2A3344;
 
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-lexend), system-ui, sans-serif;
+  --font-display: var(--font-darker-grotesque), var(--font-lexend), system-ui, sans-serif;
   --font-mono: var(--font-jb-mono), ui-monospace, monospace;
 
   --animate-gradient-pan: gradient-pan 12s ease infinite;

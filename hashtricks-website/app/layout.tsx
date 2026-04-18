@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Lexend, Darker_Grotesque, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const spaceGrotesk = Space_Grotesk({
+const lexend = Lexend({ subsets: ["latin"], variable: "--font-lexend", display: "swap" });
+const darkerGrotesque = Darker_Grotesque({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-darker-grotesque",
   display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 const jbMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jb-mono", display: "swap" });
 
@@ -35,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jbMono.variable} h-full antialiased`}
+      className={`${lexend.variable} ${darkerGrotesque.variable} ${jbMono.variable} h-full antialiased`}
     >
       <body className="grain min-h-full flex flex-col bg-[var(--color-surface)] text-[var(--color-neutral)]">
         {children}
