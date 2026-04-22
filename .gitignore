@@ -5,3 +5,5 @@ hashtricks-website/.npm-cache/
 hashtricks-website/.env
 hashtricks-website/.env.local
 .playwright-mcp/
+.claude/
+docs/

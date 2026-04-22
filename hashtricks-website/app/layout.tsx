@@ -59,9 +59,15 @@ export const metadata: Metadata = {
     images: ["/opengraph-image"],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/hashtricks-favicon-16.png", sizes: "16x16", type: "image/png" },
+      { url: "/hashtricks-favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/hashtricks-favicon-64.png", sizes: "64x64", type: "image/png" },
+      { url: "/hashtricks-favicon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/hashtricks-favicon-32.png",
+    apple: [{ url: "/hashtricks-favicon-180.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/site.webmanifest",
   alternates: { canonical: siteUrl },
@@ -72,7 +78,7 @@ const orgSchema = {
   "@type": "Organization",
   name: "Hashtricks Technologies",
   url: siteUrl,
-  logo: `${siteUrl}/favicon.ico`,
+  logo: `${siteUrl}/hashtricks-favicon-512.png`,
   description:
     "Hashtricks Technologies builds custom software and AI-powered systems that reduce manual work and help growing businesses operate smarter.",
   foundingDate: "2024",

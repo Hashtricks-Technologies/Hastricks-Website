@@ -7,10 +7,9 @@
   "background_color": "#161E54",
   "theme_color": "#F16D34",
   "icons": [
-    {
-      "src": "/favicon.ico",
-      "sizes": "48x48",
-      "type": "image/x-icon"
-    }
+    { "src": "/hashtricks-favicon-64.png", "sizes": "64x64", "type": "image/png" },
+    { "src": "/hashtricks-favicon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/hashtricks-favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/hashtricks-avatar-navy-square.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
